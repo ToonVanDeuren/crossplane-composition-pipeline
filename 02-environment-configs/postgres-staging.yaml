@@ -1,0 +1,14 @@
+apiVersion: apiextensions.crossplane.io/v1beta1
+kind: EnvironmentConfig
+metadata:
+  name: postgres-staging
+  labels:
+    scope: shared
+    workload: postgres
+    environment: staging
+data:
+  serverId: /subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>
+  serverFqdn: <server>.postgres.database.azure.com
+  adminUser: <admin-user>
+  charset: UTF8
+  collation: en_US.utf8

@@ -1,0 +1,11 @@
+# This is the only object a developer creates. Two fields: the environment
+# and the database name. Everything else (server, region, resource group,
+# database defaults, credentials) is the platform's responsibility.
+apiVersion: platform.example.com/v1alpha1
+kind: PostgresDatabase
+metadata:
+  name: payments
+  namespace: team-payments
+spec:
+  environment: production
+  databaseName: payments

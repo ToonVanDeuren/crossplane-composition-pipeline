@@ -1,0 +1,40 @@
+# One ClusterProviderConfig per environment. Credentials are referenced from a
+# Secret created out of band (typically by Terraform that also provisions the
+# shared Flexible Server). The composition selects between these by
+# `spec.environment`. Namespaced managed resources from `*.azure.m.upbound.io`
+# reference these via `providerConfigRef.kind: ClusterProviderConfig`.
+apiVersion: azure.m.upbound.io/v1beta1
+kind: ClusterProviderConfig
+metadata:
+  name: azure-development
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: azure-creds-development
+      key: credentials
+---
+apiVersion: azure.m.upbound.io/v1beta1
+kind: ClusterProviderConfig
+metadata:
+  name: azure-staging
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: azure-creds-staging
+      key: credentials
+---
+apiVersion: azure.m.upbound.io/v1beta1
+kind: ClusterProviderConfig
+metadata:
+  name: azure-production
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: azure-creds-production
+      key: credentials

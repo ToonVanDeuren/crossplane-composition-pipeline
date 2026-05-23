@@ -1,0 +1,18 @@
+# EnvironmentConfigs describe shared infrastructure the composition does not
+# own. In a real platform these are created by the same pipeline (typically
+# Terraform) that provisions the underlying Flexible Server. The composition
+# reads them at runtime via function-extra-resources.
+apiVersion: apiextensions.crossplane.io/v1beta1
+kind: EnvironmentConfig
+metadata:
+  name: postgres-development
+  labels:
+    scope: shared
+    workload: postgres
+    environment: development
+data:
+  serverId: /subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>
+  serverFqdn: <server>.postgres.database.azure.com
+  adminUser: <admin-user>
+  charset: UTF8
+  collation: en_US.utf8
