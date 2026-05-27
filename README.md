@@ -13,6 +13,9 @@ The example provisions a PostgreSQL database on a **shared Azure Flexible Server
   functions.yaml            function-go-templating, function-extra-resources, function-auto-ready
   providers.yaml            provider-azure-dbforpostgresql
   provider-configs.yaml     ClusterProviderConfig per environment
+  rbac.yaml                 ClusterRole + binding granting every SA in
+                            crossplane-system verbs on the dbforpostgresql
+                            API groups
 
 02-environment-configs/     describes shared infra the composition references
   postgres-development.yaml
